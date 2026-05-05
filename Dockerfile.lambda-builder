@@ -1,0 +1,31 @@
+FROM amazonlinux:2023
+
+ENV RUSTUP_HOME=/usr/local/rustup
+ENV CARGO_HOME=/usr/local/cargo
+ENV PATH=/usr/local/cargo/bin:${PATH}
+
+RUN dnf update -y && \
+    dnf install -y \
+      clang \
+      cmake \
+      curl-minimal \
+      file \
+      findutils \
+      gcc \
+      gcc-c++ \
+      git \
+      gzip \
+      make \
+      openssl-devel \
+      perl-core \
+      pkgconfig \
+      python3 \
+      tar \
+      unzip \
+      which \
+      xz && \
+    dnf clean all
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --profile minimal --default-toolchain stable
+
+WORKDIR /workspace

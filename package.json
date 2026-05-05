@@ -1,0 +1,51 @@
+{
+  "name": "@chegger/node-obscura-aws-lambda",
+  "version": "0.1.0",
+  "description": "AWS Lambda-specific Node.js runtime wrapper for the Obscura browser binary.",
+  "main": "index.cjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "default": "./index.cjs"
+    }
+  },
+  "files": [
+    "index.cjs",
+    "index.d.ts",
+    "postinstall.cjs",
+    "README.md",
+    "LICENSE",
+    "Dockerfile.lambda-builder",
+    "scripts"
+  ],
+  "scripts": {
+    "postinstall": "node postinstall.cjs",
+    "build:artifact": "node scripts/build-obscura-lambda.mjs",
+    "smoke:test": "node scripts/smoke-test.mjs",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "keywords": [
+    "aws-lambda",
+    "browser",
+    "cdp",
+    "obscura",
+    "playwright",
+    "puppeteer"
+  ],
+  "author": "Christian Egger",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chegger/node-obscura-aws-lambda.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chegger/node-obscura-aws-lambda/issues"
+  },
+  "homepage": "https://github.com/chegger/node-obscura-aws-lambda#readme",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  }
+}
