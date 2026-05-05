@@ -120,11 +120,6 @@ Build scripts:
 - `OBSCURA_LAMBDA_SMOKE_IMAGE` overrides the Lambda base image used by the
   smoke test
 
-## Consumer notes
-
-In the `insights` repo, the browser worker should depend on this package
-instead of `@chegger/node-obscura` once its release artifacts are published.
-
 ## License
 
 MIT for this wrapper package. Obscura itself remains Apache-2.0 under its
