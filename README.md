@@ -44,6 +44,22 @@ main().catch((error) => {
 });
 ```
 
+If you use CDK `NodejsFunction`, force Docker bundling so the postinstall step
+runs in a Linux x64 Lambda-like environment and includes the downloaded binary
+in the deployment artifact:
+
+```ts
+const myLambdaFunction = new lambda.NodejsFunction(this, 'MyLambdaFunction', {
+  // ...
+  runtime: l.Runtime.NODEJS_24_X,
+  architecture: l.Architecture.X86_64,
+  bundling: {
+    forceDockerBundling: true,
+    nodeModules: ['@chegger/node-obscura-aws-lambda'],
+  },
+});
+```
+
 ## API
 
 The runtime API intentionally mirrors `@chegger/node-obscura`.
