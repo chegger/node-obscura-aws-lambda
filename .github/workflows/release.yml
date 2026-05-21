@@ -43,10 +43,29 @@ jobs:
             dist/*
             *.tgz
 
+      - name: Read build metadata
+        if: startsWith(github.ref, 'refs/tags/')
+        id: build_metadata
+        run: |
+          upstream_tag="$(jq -r .upstreamTag dist/build-metadata.json)"
+          upstream_repo="$(jq -r .upstreamRepo dist/build-metadata.json)"
+          sha256="$(jq -r .sha256 dist/build-metadata.json)"
+          {
+            echo "upstream_tag=${upstream_tag}"
+            echo "upstream_repo=${upstream_repo}"
+            echo "sha256=${sha256}"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
+          body: |
+            Lambda artifact built from upstream Obscura ${{ steps.build_metadata.outputs.upstream_tag }}.
+
+            - Upstream repo: ${{ steps.build_metadata.outputs.upstream_repo }}
+            - Upstream tag: ${{ steps.build_metadata.outputs.upstream_tag }}
+            - Artifact SHA256: `${{ steps.build_metadata.outputs.sha256 }}`
           files: |
             dist/*
 

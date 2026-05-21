@@ -7,6 +7,11 @@ This package exists so Lambda consumers can install a Lambda-compatible
 `obscura` build directly, without carrying the default desktop/server targets
 from `@chegger/node-obscura`.
 
+## Built Obscura version
+
+The Lambda artifact in this repo is built from upstream Obscura
+**v0.1.5** (`dist/build-metadata.json` records the exact tag and checksum).
+
 ## Install
 
 ```bash
