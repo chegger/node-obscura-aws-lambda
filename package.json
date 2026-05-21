@@ -1,6 +1,6 @@
 {
   "name": "@chegger/node-obscura-aws-lambda",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "AWS Lambda-specific Node.js runtime wrapper for the Obscura browser binary.",
   "main": "index.cjs",
   "types": "index.d.ts",
