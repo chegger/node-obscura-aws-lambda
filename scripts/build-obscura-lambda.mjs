@@ -15,7 +15,7 @@ const builderTag = process.env.OBSCURA_LAMBDA_DOCKER_TAG || 'node-obscura-aws-la
 
 const upstreamRepo =
   process.env.OBSCURA_UPSTREAM_REPO || 'https://github.com/h4ckf0r0day/obscura.git';
-const upstreamTag = process.env.OBSCURA_UPSTREAM_TAG || 'v0.1.5';
+const upstreamTag = process.env.OBSCURA_UPSTREAM_TAG || 'v0.1.6';
 const cargoFeatures = process.env.OBSCURA_CARGO_FEATURES || 'stealth';
 const archiveName = 'obscura-x86_64-linux-lambda.tar.gz';
 const archivePath = path.join(distRoot, archiveName);
