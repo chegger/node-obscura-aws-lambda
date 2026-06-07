@@ -10,7 +10,7 @@ from `@chegger/node-obscura`.
 ## Built Obscura version
 
 The Lambda artifact in this repo is built from upstream Obscura
-**v0.1.6** (`dist/build-metadata.json` records the exact tag and checksum).
+**v0.1.7** (`dist/build-metadata.json` records the exact tag and checksum).
 
 ## Install
 
