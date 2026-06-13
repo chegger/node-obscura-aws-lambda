@@ -3,24 +3,14 @@
 AWS Lambda-specific Node.js wrapper around the
 [Obscura](https://github.com/h4ckf0r0day/obscura) browser binary.
 
-This package exists so Lambda consumers can install a Lambda-compatible
-`obscura` build directly, without carrying the default desktop/server targets
-from `@chegger/node-obscura`.
-
-## Built Obscura version
-
-The Lambda artifact in this repo is built from upstream Obscura
-**v0.1.8** (`dist/build-metadata.json` records the exact tag and checksum).
+- **Obscura:** v0.1.8 (`dist/build-metadata.json` records the exact tag and checksum)
+- **Target runtime:** AWS Lambda `nodejs24.x` on Linux x64
 
 ## Install
 
 ```bash
 npm install @chegger/node-obscura-aws-lambda
 ```
-
-Supported target:
-
-- Linux x64, intended for AWS Lambda `nodejs24.x`
 
 ## Usage
 
@@ -66,8 +56,6 @@ const myLambdaFunction = new lambda.NodejsFunction(this, 'MyLambdaFunction', {
 ```
 
 ## API
-
-The runtime API intentionally mirrors `@chegger/node-obscura`.
 
 ### `getBinaryPath()`
 
