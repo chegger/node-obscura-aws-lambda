@@ -3,7 +3,7 @@
 AWS Lambda-specific Node.js wrapper around the
 [Obscura](https://github.com/h4ckf0r0day/obscura) browser binary.
 
-- **Obscura:** v0.1.8 (`dist/build-metadata.json` records the exact tag and checksum)
+- **Obscura:** same version as this package (see `package.json`; built tag and checksum are in `dist/build-metadata.json`)
 - **Target runtime:** AWS Lambda `nodejs24.x` on Linux x64
 
 ## Install
@@ -122,12 +122,27 @@ Runtime install:
 Build scripts:
 
 - `OBSCURA_UPSTREAM_REPO` overrides the upstream Obscura git repo
-- `OBSCURA_UPSTREAM_TAG` overrides the upstream Obscura git tag
+- `OBSCURA_UPSTREAM_TAG` overrides the upstream Obscura git tag. Default: `v${package.version}`
 - `OBSCURA_CARGO_FEATURES` overrides Cargo features. Default: `stealth`
 - `OBSCURA_LAMBDA_DOCKER_TAG` overrides the local Docker builder image tag
 - `OBSCURA_LAMBDA_ARCHIVE` overrides the archive path used by the smoke test
 - `OBSCURA_LAMBDA_SMOKE_IMAGE` overrides the Lambda base image used by the
   smoke test
+
+## Releasing
+
+Package version and upstream Obscura tag are kept in sync via `package.json`.
+
+```bash
+npm run version:set -- 0.1.9
+git add package.json package-lock.json
+git commit -m "Release 0.1.9 with upstream Obscura v0.1.9."
+git push origin main
+git tag v0.1.9
+git push origin v0.1.9
+```
+
+CI then builds the Lambda binary, creates the GitHub release, and publishes to npm.
 
 ## License
 

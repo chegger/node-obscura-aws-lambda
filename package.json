@@ -24,6 +24,7 @@
     "postinstall": "node postinstall.cjs",
     "build:artifact": "node scripts/build-obscura-lambda.mjs",
     "smoke:test": "node scripts/smoke-test.mjs",
+    "version:set": "node scripts/bump-version.mjs",
     "pack:dry": "npm pack --dry-run"
   },
   "keywords": [

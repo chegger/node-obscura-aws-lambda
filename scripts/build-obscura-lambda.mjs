@@ -7,6 +7,7 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const repoRoot = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const packageJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'package.json'), 'utf8'));
 const workRoot = path.join(repoRoot, 'build');
 const distRoot = path.join(repoRoot, 'dist');
 const outputRoot = path.join(workRoot, 'output');
@@ -15,7 +16,7 @@ const builderTag = process.env.OBSCURA_LAMBDA_DOCKER_TAG || 'node-obscura-aws-la
 
 const upstreamRepo =
   process.env.OBSCURA_UPSTREAM_REPO || 'https://github.com/h4ckf0r0day/obscura.git';
-const upstreamTag = process.env.OBSCURA_UPSTREAM_TAG || 'v0.1.8';
+const upstreamTag = process.env.OBSCURA_UPSTREAM_TAG || `v${packageJson.version}`;
 const cargoFeatures = process.env.OBSCURA_CARGO_FEATURES || 'stealth';
 const archiveName = 'obscura-x86_64-linux-lambda.tar.gz';
 const archivePath = path.join(distRoot, archiveName);
